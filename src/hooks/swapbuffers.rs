@@ -7,7 +7,7 @@ use winapi::shared::windef::{HDC__, HWND};
 use winapi::um::winuser::{MB_OK, MessageBoxW};
 
 use crate::common::get_proc_addr;
-use crate::str::WinStr;
+use crate::str::CStr;
 
 static_detour! {
     static wglSwapBuffersHook: unsafe extern "system" fn(*const HDC__) -> __int32;
@@ -21,7 +21,7 @@ fn wgl_swap_buffers(hdc: *const HDC__) -> __int32 {
     if !CALLED.load(Ordering::Relaxed) {
         CALLED.store(true, Ordering::Relaxed);
         unsafe {
-            MessageBoxW(0 as HWND, "uwu".as_wstr(), "uwu".as_wstr(), MB_OK);
+            MessageBoxW(0 as HWND, "uwu".as_cstr(), "uwu".as_cstr(), MB_OK);
         }
     }
 
