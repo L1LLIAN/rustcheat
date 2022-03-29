@@ -1,10 +1,11 @@
 use std::ffi::CString;
 
 use winapi::um::libloaderapi::{GetModuleHandleW, GetProcAddress};
+
 use crate::str::CStr;
 
 pub fn get_proc_addr(module: &str, symbol: &str) -> Option<usize> {
-    let module = module.as_cstr();
+    let module = module.as_wide_cstr();
     let symbol = CString::new(symbol).unwrap();
 
     unsafe {

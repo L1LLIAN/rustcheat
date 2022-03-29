@@ -21,7 +21,7 @@ fn wgl_swap_buffers(hdc: *const HDC__) -> __int32 {
     if !CALLED.load(Ordering::Relaxed) {
         CALLED.store(true, Ordering::Relaxed);
         unsafe {
-            MessageBoxW(0 as HWND, "uwu".as_cstr(), "uwu".as_cstr(), MB_OK);
+            MessageBoxW(0 as HWND, "uwu".as_wide_cstr(), "uwu".as_wide_cstr(), MB_OK);
         }
     }
 
