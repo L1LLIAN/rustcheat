@@ -1,4 +1,4 @@
-use std::ffi::{CString, OsStr};
+use std::ffi::OsStr;
 use std::os::windows::ffi::OsStrExt;
 
 pub trait CStr {
